@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Delegate_LessBuilder</id>
+    <version>1.1.2</version>
+    <title>Delegate Less Builder</title>
+    <summary>Add auto build for .less files</summary>
+    <authors>Søren Laurits Nielsen (sln@delegate.dk)</authors>
+    <owners>Søren Laurits Nielsen (sln@delegate.dk)</owners>
+    <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
+    <projectUrl>https://github.com/delegateas/Delegate_LessBuilder</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/delegateas/Delegate_LessBuilder/master/DelegateLogo_g.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Configures a project to automatically compile all less files to css during build. No manual setup required and no dependencies added to your project</description>
+    <releaseNotes>Notice: Includes a compiled version of dotless.</releaseNotes>
+    <copyright>Copyright Delegate A/S 2015</copyright>
+    <tags>Less Build Delegate MSBuild VisualStudio</tags>
+  </metadata>
+</package>

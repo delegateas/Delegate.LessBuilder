@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Note: Config and XML filenames should not contain a . character.  AppSettings.config = ok, Configuration.AppSettings.Config = bad -->
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DotLessExe Condition=" '$(DotLessExe)'=='' ">$(MSBuildThisFileDirectory)..\tool\dotless.1.5.0\dotless.compiler.exe</DotLessExe>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <LessFiles Include="$(MSBuildProjectDirectory)\**\*.less">
+      <InProject>false</InProject>
+    </LessFiles>
+  </ItemGroup>
+ 
+  <!-- For old school inclusion -->
+  <PropertyGroup>
+      <BuildDependsOn>
+          Delegate_LessCompile;
+          $(BuildDependsOn);
+      </BuildDependsOn>
+      <CleanDependsOn>
+          Delegate_LessClean;
+          $(CleanDependsOn);
+      </CleanDependsOn>
+  </PropertyGroup>
+
+  <Target Name="Delegate_LessCompile" Inputs="@(LessFiles)" Outputs="@(LessFiles->'%(relativedir)%(Filename).css')" BeforeTargets="Build" >
+    <ItemGroup>
+      <LessFilesInProject Include="@(None);@(Content)" Condition="'%(Extension)' == '.less'" />
+    </ItemGroup>
+
+    <Message Text="Delegate_LessCompile: Compiling %(LessFilesInProject.Identity)" Importance="high" />
+
+    <Exec ConsoleToMSBuild="true" ConsoleOutput="true" Command="&quot;$(DotLessExe)&quot; %(LessFilesInProject.Identity) ">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+  </Target>
+
+  <Target Name="Delegate_LessClean" BeforeTargets="Clean">
+    <ItemGroup>
+      <LessFilesInProject Include="@(None);@(Content)" Condition="'%(Extension)' == '.less'" />
+    </ItemGroup>
+
+    <Message Text="Delegate_LessCompile: Cleaning @(LessFilesInProject->'%(relativedir)%(Filename).css')" Importance="high" />
+
+    <Delete Files="@(LessFilesInProject->'%(relativedir)%(Filename).css')" />
+  </Target>
+
+</Project>
