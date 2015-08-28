@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Delegate_LessBuilder</id>
-    <version>1.1.2</version>
+    <id>Delegate.LessBuilder</id>
+    <version>1.2.0</version>
     <title>Delegate Less Builder</title>
     <summary>Add auto build for .less files</summary>
     <authors>Søren Laurits Nielsen (sln@delegate.dk)</authors>
