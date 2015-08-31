@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Delegate.LessBuilder</id>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <title>Delegate Less Builder</title>
     <summary>Add auto build for .less files</summary>
     <authors>Søren Laurits Nielsen (sln@delegate.dk)</authors>
